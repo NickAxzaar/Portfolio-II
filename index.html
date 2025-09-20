@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Original viewport tag replaced -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nilesh Ahirwar</title>
+    <link rel="shortcut icon" href="logos/axzaarians.png" type="images/png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <!-- Splash Screen -->
+        <div id="splash-screen" style="
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url('images/splashscreenbackground.jpg') center center/cover no-repeat;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;">
+            <div id="loading-bar-container"
+                style="width: 10%; height: 2px; background: #fff2; border-radius: 10px; overflow: hidden;">
+                <div id="loading-bar" style="height: 100%; width: 0; background: #00f7ff; transition: width 3s;"></div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                // Animate loading bar
+                document.getElementById('loading-bar').style.width = '100%';
+                // Hide splash after 2 seconds
+                setTimeout(function () {
+                    document.getElementById('splash-screen').style.display = 'none';
+                }, 2500);
+            });
+        </script>
+
+        <div class="wrapper">
+            <div class="content">
+                <section class="section hero">
+                    <img id="apnalogo" src="logos/axzaarians.png" alt="logo">
+                    <div class="resume-btn-container">
+                        <button id="resume-btn" onclick="downloadResume()">
+                            Download Resume
+                        </button>
+                        <span class="resume-text"></span>
+                    </div>
+                    <div class="animated-paragraph-container">
+                        <div class="animated-paragraph" id="animatedParagraph">
+                            <p style="font-family: chacha;">
+                                Hi, I'm Nilesh (Nick), <br>
+                                an Experienced X Telecom Customer Service Representative and a
+                                Computer Science Engineer with a diverse educational background from Kendriya
+                                Vidyalaya to Sankatmochan Higher Secondary. Growing up in different place,
+                                influenced by my father's army postings, that has given me a broad perspective
+                                and shaped my adaptability, discipline, and problem solving skills. <br>
+                                My travels and exposure to varied environments continue to inspire my innovative
+                                approach toward technology. <br>
+                                I'm Proficient in Full Stack Development, in addition, i hold certifications in
+                                Cybersecurity, Ethical Hacking, and Hardware Networking & Troubleshooting which
+                                complement my technical foundation. <br>
+                                With this blend of Academic Knowledge Technical skills and professional experience,
+                                I am committed to setting new benchmark's in the field of technology,
+                                and my Entrepreneurial spirit drives me to explore new opportunities and challenges.
+                                <br>
+                                Let's connect and explore how we can innovate together!
+                            </p>
+                        </div>
+                    </div>
+                    <h1 class="merichezen">Contacts & Links</h1>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/nileshahirwar" target="_blank">
+                            <img src="icons/linkedin.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://instagram.com/nickaxzaar" target="_blank">
+                            <img src="icons/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://facebook.com/nickaxzaar" target="_blank">
+                            <img src="icons/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.youtube.com/axzaarians" target="_blank">
+                            <img src="icons/youtube.png" alt="YouTube">
+                        </a>
+                        <a href="https://x.com/nickaxzaar" target="_blank">
+                            <img src="icons/twitter.png" alt="Twitter">
+                        </a>
+                    </div>
+                </section>
+            </div>
+            <div class="image-container" >
+                <img src="images/Foreground1.png" alt="image" />
+            </div>
+        </div>
+    </main>
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="music/background-music.mp3" type="audio/mpeg">
+        <source src="music/background-music.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <div class="music-control-container">
+        <button id="music-toggle-btn" onclick="toggleMusic()">
+            🔊
+        </button>
+    </div>
+
+</body>
+
+</html>

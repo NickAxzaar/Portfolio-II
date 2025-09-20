@@ -1,0 +1,609 @@
+@font-face {
+    font-family: 'chacha';
+    src: url(./Rostheroid-1Go0M.ttf);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+body {
+    background: #111;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Splash Screen */
+#splash-screen {
+    background: url('images/splashscreenbackground.jpg') no-repeat center center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#loading-bar-container {
+    width: 10vw;
+    height: 3px;
+    background: #fff2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0;
+    background: #00f7ff;
+    transition: width 2s;
+}
+
+/* Main Layout */
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    overflow-x: hidden;
+}
+
+.section.hero {
+    width: 100vw;
+    height: 100vh;
+    background: url('images/Background1.png') center center/cover no-repeat;
+    position: fixed;
+    /* Yeh line add karein */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* GPU acceleration for better performance */
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+#apnalogo {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    width: 50px;
+    height: 73px;
+    z-index: 5;
+    pointer-events: auto;
+}
+
+/* Resume Button Styles - Curved Square with Glow */
+.resume-btn-container {
+    position: absolute;
+    top: 435px;
+    right: 606px;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#resume-btn {
+    /* Blurry transparent background */
+    background: rgba(148, 151, 119, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Curved square button */
+    width: 80px;
+    height: 35px;
+    border-radius: 8px;
+    /* Curved edges - not fully round */
+    border: 1px solid rgba(238, 255, 0, 0.3);
+
+    /* Text styling */
+    color: #ffffffd3;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Smooth transition */
+    transition: all 0.3s ease;
+
+    /* Remove default button styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#resume-btn:hover {
+    /* Glow effect on hover */
+    background: rgba(243, 255, 175, 0.219);
+    box-shadow: 0 0 20px rgba(254, 255, 194, 0.253);
+    border: 1px solid rgb(254, 255, 190);
+    transform: scale(1.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .resume-btn-container {
+        top: 20px;
+        right: 20px;
+        gap: 8px;
+    }
+
+    #resume-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+
+    .resume-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-btn-container {
+        gap: 6px;
+    }
+
+    #resume-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+
+}
+
+
+/* Animated Paragraph */
+
+.animated-paragraph-container {
+    position: absolute;
+    left: 200px;
+    /* Added gap from the left side */
+    bottom: 3cm;
+    width: 35vw;
+    max-width: 1000px;
+    height: 460px;
+    overflow-y: auto;
+    /* Allow vertical scroll */
+    background: rgba(255, 255, 255, 0);
+    border-radius: 18px 18px 0 0;
+    padding: 18px 24px;
+    box-sizing: border-box;
+    z-index: 10;
+    scrollbar-width: thin;
+    scrollbar-color: #00f7ff00 #22222200;
+    /* Performance optimization */
+    contain: layout style paint;
+}
+
+/* Custom scrollbar for Webkit browsers */
+.animated-paragraph-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.animated-paragraph-container::-webkit-scrollbar-thumb {
+    background: #05b8be00;
+    border-radius: 8px;
+}
+
+.animated-paragraph-container::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 8px;
+}
+
+.animated-paragraph {
+    position: relative;
+    width: 100%;
+    /* Remove animation so user can scroll manually */
+}
+
+@keyframes paragraphScrollUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(-2%);
+    }
+}
+
+.animated-paragraph p {
+    color: #fff;
+    font-size: 2.1rem;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+@media (max-width: 600px) {
+    .animated-paragraph-container {
+        left: 8px;
+        /* Smaller gap on mobile */
+        width: 90vw;
+        max-width: none;
+        height: 120px;
+        padding: 10px 8px;
+    }
+
+    .animated-paragraph p {
+        font-size: 0.92rem;
+    }
+}
+
+.merichezen {
+    position: absolute;
+    right: 473.2px;
+    bottom: 180px;
+    /* Social icons ke upar space de */
+    font-size: 2.1vw;
+    color: #ffffff;
+    text-shadow: 0 2px 16px #0a0a0a, 0 0 8px #878787;
+    z-index: 11;
+    /* Social icons se upar rahe */
+    margin: 0;
+    font-family: chacha;
+}
+
+/* Social Icons */
+.social-icons {
+    position: absolute;
+    right: 476px;
+    bottom: 151px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    z-index: 10;
+    pointer-events: auto;
+    /* Performance optimization */
+}
+
+.social-icons a {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #cce5291c, #191919b5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    /* GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.social-icons a img {
+    width: 18px;
+    height: 18px;
+    filter: drop-shadow(0 2px 8px #0008);
+    transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgb(255, 255, 255);
+}
+
+.social-icons a:hover img {
+    transform: scale(1.15);
+}
+
+.social-icons,
+.social-icons a,
+.social-icons a img {
+    pointer-events: auto !important;
+}
+
+/* Foreground Image Overlay */
+.image-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    pointer-events: none;
+    /* disables pointer events for the container */
+    /* GPU acceleration and performance */
+    transform: translateZ(0);
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.image-container img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    pointer-events: none;
+    /* disables pointer events for the image */
+    /* GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform;
+    /* Image optimization */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+}
+
+.name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 2px 16px #000, 0 0 8px #00f7ff;
+    opacity: 0;
+    animation: fadeInName 2s forwards 1.2s;
+    z-index: 10;
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+    /* GPU acceleration */
+    transform: translate(-50%, -50%) translateZ(0);
+    will-change: opacity;
+}
+
+@keyframes fadeInName {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 4;
+    }
+}
+
+/* Music Control Button Styles */
+.music-control-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 20;
+}
+
+#music-toggle-btn {
+    /* Blurry transparent background */
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Button styling */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Text styling */
+    color: #ffffff;
+    font-size: 13px;
+    cursor: pointer;
+
+    /* Smooth transition */
+    transition: all 0.3s ease;
+
+    /* Center the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#music-toggle-btn:hover {
+    /* Glow effect on hover */
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
+}
+
+#music-toggle-btn.muted {
+    /* Muted state styling */
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff6b6b;
+}
+
+#music-toggle-btn.muted:hover {
+    background: rgba(255, 0, 0, 0.25);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .music-control-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #music-toggle-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE - 768px se kam ===== */
+@media screen and (max-width: 767px) {
+
+    /* Logo - Mobile */
+    #apnalogo {
+        top: 50px;
+        left: 27px;
+        width: 25px;
+        height: 40px;
+    }
+
+    /* Resume Button - Mobile */
+    .resume-btn-container {
+        top: 60px;
+        right: 45px;
+        gap: 1px;
+    }
+
+    #resume-btn {
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+
+    .resume-text {
+        font-size: 2px;
+    }
+
+    /* Animated Paragraph - Mobile (Bottom mein compact) */
+    .animated-paragraph-container {
+        left: 5%;
+        bottom: 15%;
+        width: 55%;
+        height: 320px;
+        padding: 15px 20px;
+        border-radius: 10px;
+    }
+
+    .animated-paragraph p {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    /* Social Icons - Mobile (Bottom center) */
+    .social-icons {
+        right: 13.5%;
+        transform: translateX(50%);
+        bottom: 19.5%;
+        gap: 15px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .social-icons a {
+        width: 25px;
+        height: 25px;
+    }
+
+    .social-icons a img {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Music Control - Mobile */
+    .music-control-container {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    #music-toggle-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+/* ===== TABLET RESPONSIVE - 768px se 1023px ===== */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    /* Logo - Tablet */
+    #apnalogo {
+        top: 40px;
+        left: 60px;
+        width: 45px;
+        height: 65px;
+    }
+
+    /* Resume Button - Tablet */
+    .resume-btn-container {
+        top: 40px;
+        right: 60px;
+        gap: 8px;
+    }
+
+    #resume-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 6px;
+    }
+
+    .resume-text {
+        font-size: 14px;
+    }
+
+    /* Name Title - Tablet */
+    .merichezen {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 25%;
+        font-size: 3.5vw;
+        text-align: center;
+    }
+
+    /* Animated Paragraph - Tablet */
+    .animated-paragraph-container {
+        left: 5%;
+        bottom: 8%;
+        width: 90%;
+        height: 300px;
+        padding: 15px 20px;
+    }
+
+    .animated-paragraph p {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+
+    /* Social Icons - Tablet */
+    .social-icons {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 5%;
+        justify-content: center;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icons a img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Music Control - Tablet */
+    .music-control-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    #music-toggle-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
